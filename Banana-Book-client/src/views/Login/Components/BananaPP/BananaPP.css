@@ -1,0 +1,11 @@
+.logo-circular{
+    display: flex;
+    justify-content: center;
+
+    margin-top: 7rem;
+}
+
+.logo-circular > img {
+    width: 340px;
+    height: 329px;
+}

@@ -1,0 +1,95 @@
+form.register-form {
+  width: 65%;
+  height: auto;
+  display: flex;
+  float: left;
+  justify-content: left;
+  align-items: center;
+  margin-top: 7%;
+}
+
+div.form-group {
+  justify-content: space-between;
+}
+
+div.email {
+  width: auto;
+  height: auto;
+  top: 10%;
+}
+
+form.register-form > div > div > input {
+  width: 500px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  font-family: 'Inika', sans-serif;
+  background-color: #fff3c9;
+  font-weight: bold;
+  margin-top: 5%;
+}
+
+form.register-form > div > div > input:focus {
+  outline: none;
+}
+
+form.register-form > div > div > input::placeholder {
+  color: #604100;
+  font-weight: bold;
+  opacity: 0.5;
+  font-family: 'Inika', sans-serif;
+}
+
+div.name {
+  top: 20%;
+}
+
+div.last-name {
+  top: 30%;
+}
+
+div.password {
+  top: 40%;
+}
+
+div.btn-container {
+  margin-top: 2%;
+  position: absolute;
+  width: 512px;
+  height: auto;
+  object-fit: contain;
+  display: flex;
+}
+button.btn-login {
+  position: absolute;
+  width: auto;
+  height: auto;
+  border: solid 1px #604100;
+  background-color: #604100;
+  color: #fff3c9;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  left: 0;
+}
+
+button.btn-register {
+  position: absolute;
+  width: auto;
+  height: auto;
+  border: solid 1px #604100;
+  background-color: #604100;
+  color: #fff3c9;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  right: 0;
+  text-align: center;
+}

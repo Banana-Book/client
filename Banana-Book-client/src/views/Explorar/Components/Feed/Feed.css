@@ -1,0 +1,12 @@
+section.explorar-page > main.feed-wrapper {
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 32px; 
+    text-align: center;
+}
+
+section.explorar-page > main > div.barra-buscar {
+    margin: 20px;
+}

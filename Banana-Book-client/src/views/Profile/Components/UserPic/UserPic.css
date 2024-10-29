@@ -1,0 +1,20 @@
+div.user-profile-pic {
+    width: 50%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+figure.UserProfilePic{
+    width: 40%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+}
+img.user-pic{
+    height: 100%;
+    width: 100%;
+}

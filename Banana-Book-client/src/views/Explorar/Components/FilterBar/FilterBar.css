@@ -1,0 +1,58 @@
+section.explorar-page > nav.Filterbar{
+    grid-area: navbar;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    
+    
+}
+
+section.explorar-page > nav.Filterbar >form > h3 {
+    font-size: 32px;
+    color: #251A00;
+
+    text-align: center;
+}
+
+section.explorar-page > nav.Filterbar >form > div > h4 {
+    font-size: 25px;
+    color: #251A00;
+
+    margin: 10px 0;
+}
+
+section.explorar-page > nav.Filterbar >form > div > label {
+    font-size: 20px;
+    color: #251A00;
+}
+
+
+section.explorar-page > nav >form > div.filter-container{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-left: 20px;
+}
+
+section.explorar-page > nav >form > hr{
+    width: 95%;
+    height: 1px;
+    border: none;
+    background-color: #211B00;
+}
+
+section.explorar-page > nav >form >div > input{
+    height: 2.5rem;
+    width: 8rem;
+    color: black;
+
+    outline: none;
+    border-radius: 10px;
+    font-size: 20px;
+
+    background-color: white;
+}
+
+section.explorar-page > nav >form >div  > input::placeholder{
+    color: black;
+}
