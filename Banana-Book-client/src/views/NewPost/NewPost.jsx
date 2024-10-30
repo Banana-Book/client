@@ -34,7 +34,6 @@ const NewPost = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
-    /* savePost(titleField, descriptionField, priceField, categoryField, conditionField, imageField); */
     onAddPostHandler(titleField, descriptionField, priceField, categoryField, conditionField, imageField);
 
     setTitle('');
@@ -47,15 +46,6 @@ const NewPost = () => {
       toast.warn('Your fields are wrong!');
       return;
     }
-
-    savePost(titleField, descriptionField, priceField, categoryField, conditionField, imageField);
-
-    setTitle('');
-    setDescription('');
-    setPrice('');
-    setCategory('');
-    setCondition('');
-    setImage('');
   };
 
   //Función para guardar un post en la API
