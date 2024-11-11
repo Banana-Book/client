@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 
 import instance from '../../../../api/instance';
 import { useConfigContext } from '../../../../contexts/ConfigContext';
-import { Link, redirect } from 'react-router-dom';
 import { validateEmail, validatePassword, validateUsername } from '../../../../utils/validators';
 
 const RegisterForm = () => {
@@ -20,7 +19,7 @@ const RegisterForm = () => {
     name: !nameField || !validateUsername(nameField),
     lastName: !lastNameField || !validateUsername(lastNameField),
     email: !emailField || !validateEmail(emailField),
-    password: !passwordField || validatePassword(passwordField),
+    password: !passwordField || !validatePassword(passwordField),
   };
 
   const hasErrors = () => {

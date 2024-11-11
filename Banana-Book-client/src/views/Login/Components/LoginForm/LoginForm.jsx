@@ -45,8 +45,8 @@ export const LoginForm = () => {
   });
 
   const errors = {
-    email: !emailField || validateEmail(emailField),
-    password: !passwordField || validatePassword(passwordField),
+    email: !emailField || !validateEmail(emailField),
+    password: !passwordField || !validatePassword(passwordField),
   };
 
   const hasErrors = () => {
