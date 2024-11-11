@@ -8,11 +8,22 @@ import axios from 'axios';
 import instance, { setToken } from '../../../../api/instance';
 import { useMutation } from 'react-query';
 import { AuthContext } from '../../../../contexts/AuthContext';
+import { validateEmail, validatePassword } from '../../../../utils/validators';
+import { toast } from 'react-toastify';
 
 // {email: 'email', password: 'password'}
 
 const login = async (credentials) => {
-  const { data } = await instance.post('auth/signin', credentials);
+  let data;
+  try {
+    data = await instance.post('auth/signin', credentials);
+  } catch (error) {
+    if (error.response.status === 401) {
+      toast.error('Usuario o contraseña incorrectos');
+    } else if (error.response.status === 404) {
+      toast.error('Usuario o contraseña incorrectos');
+    }
+  }
   return data;
 };
 
@@ -34,8 +45,8 @@ export const LoginForm = () => {
   });
 
   const errors = {
-    email: !emailField,
-    password: !passwordField,
+    email: !emailField || validateEmail(emailField),
+    password: !passwordField || validatePassword(passwordField),
   };
 
   const hasErrors = () => {
