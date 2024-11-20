@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ProductForm.css';
 import profileIcon from '../../../assets/img/profileIcon.png';
 
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import instance from '../../../api/instance';
 import { jwtDecode } from 'jwt-decode';
@@ -18,6 +18,21 @@ const ProductForm = () => {
   const { id } = useParams();
 
   const [loading, setLoading] = useState(false);
+  const [loadingHidden, setLoadingHidden] = useState(false);
+  const [isMyProduct, setIsMyProduct] = useState(false);
+  const navigate = useNavigate();
+
+  const setHidden = async () => {
+    setLoadingHidden(true);
+    try {
+      await instance.patch(`/post/${id}/hidden`);
+      navigate(-1);
+    } catch (error) {
+      toast.error('Error al marcar como vendido');
+    } finally {
+      setLoadingHidden(false);
+    }
+  };
 
   const sendEmail = async () => {
     setLoading(true);
@@ -43,6 +58,14 @@ const ProductForm = () => {
     enabled: !!id,
     refetchOnWindowFocus: false,
   });
+
+  useEffect(() => {
+    if (data) {
+      const token = window.localStorage.getItem(import.meta.env.VITE_TOKEN_KEY);
+      const decodecToken = jwtDecode(token);
+      setIsMyProduct(data?.user?.email === decodecToken.email);
+    }
+  }, [data]);
 
   return (
     <div className="Product_view">
@@ -97,6 +120,21 @@ const ProductForm = () => {
             <img className="profile_icon" src={profileIcon} alt="profileIcon" />
             <label className="seller">{`${data?.user?.name} ${data?.user?.lastName}`}</label>
           </div>
+
+          {loadingHidden && (
+            <div class="container">
+              <img class="dot" src={banana} />
+              <img class="dot" src={banana} />
+              <img class="dot" src={banana} />
+              <img class="dot" src={banana} />
+            </div>
+          )}
+
+          {!loadingHidden && isMyProduct && (
+            <button className="contact_seller" onClick={setHidden}>
+              Marcar como vendido
+            </button>
+          )}
         </div>
       </div>
     </div>
