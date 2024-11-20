@@ -5,6 +5,7 @@ import profileIcon from '../../../assets/img/profileIcon.png';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import instance from '../../../api/instance';
+import { jwtDecode } from 'jwt-decode';
 
 const fetchProduct = async (id) => {
   const { data } = await instance.get(`/post/${id}`);
@@ -14,6 +15,25 @@ const fetchProduct = async (id) => {
 const ProductForm = () => {
   const { id } = useParams();
 
+  const sendEmail = async () => {
+    try {
+      console.log('sendEmail');
+      const token = window.localStorage.getItem(import.meta.env.VITE_TOKEN_KEY);
+      const decodecToken = jwtDecode(token);
+      const emailSelf = decodecToken.email;
+      console.log(data);
+      const emailData = {
+        to: data?.user?.email,
+        subject: 'Interesado en tu publicación',
+        text: `Hola, soy ${emailSelf},estoy interesado en tu publicación ${data?.title}, me gustaría saber más detalles.`,
+      };
+      console.log(emailData);
+
+      await instance.post('/post/send-email', emailData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const { data } = useQuery(['product', id], () => fetchProduct(id), {
     enabled: !!id,
     refetchOnWindowFocus: false,
@@ -24,9 +44,9 @@ const ProductForm = () => {
     <div className="Product_view">
       <div className="Product">
         <h1>{data?.title}</h1>
-        <div className='postImage'>
+        <div className="postImage">
           <img src={data?.image} alt="postImage" />
-          </div>
+        </div>
       </div>
       <div className="Product_info">
         <div className="top_product">
@@ -62,7 +82,9 @@ const ProductForm = () => {
           </div>
         </div>
         <div className="contact_seller">
-          <button className="contact">Contactar al vendedor</button>
+          <button className="contact" onClick={sendEmail}>
+            Contactar al vendedor
+          </button>
         </div>
       </div>
     </div>
