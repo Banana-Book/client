@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './ProductForm.css';
 import profileIcon from '../../../assets/img/profileIcon.png';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams, useNavigate, redirect } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import instance from '../../../api/instance';
 import { jwtDecode } from 'jwt-decode';
@@ -22,7 +22,12 @@ const ProductForm = () => {
     setLoadingGeneralInfo(true);
     try {
       const { data } = await instance.get(`/post/${id}`);
-
+      console.log(data);
+      if (data.hidden) {
+        toast.error('Producto no encontrado');
+        navigate('/explorar');
+        return;
+      }
       return data;
     } catch (error) {
       toast.error('Error al cargar el producto');
@@ -30,15 +35,17 @@ const ProductForm = () => {
       setLoadingGeneralInfo(false);
     }
   };
-  const setHidden = async () => {
+  const setHidden = async (id) => {
     setLoadingHidden(true);
     try {
-      await instance.patch(`/post/${id}/hidden`);
-      navigate(-1);
+      console.log(id);
+      const response = await instance.patch(`/post/${id}/hidden`);
+      toast.success('Producto marcado como vendido');
     } catch (error) {
       toast.error('Error al marcar como vendido');
     } finally {
       setLoadingHidden(false);
+      navigate('/explorar');
     }
   };
 
@@ -66,14 +73,6 @@ const ProductForm = () => {
     enabled: !!id,
     refetchOnWindowFocus: false,
   });
-
-  useEffect(() => {
-    if (data) {
-      const token = window.localStorage.getItem(import.meta.env.VITE_TOKEN_KEY);
-      const decodecToken = jwtDecode(token);
-      setIsMyProduct(data?.user?.email === decodecToken.email);
-    }
-  }, [data]);
 
   if (loadingGeneralInfo) {
     return <LoadingScreen />;
@@ -105,11 +104,11 @@ const ProductForm = () => {
               </button>
             )}
             {loading && (
-              <div class="container">
-                <img class="dot" src={banana} />
-                <img class="dot" src={banana} />
-                <img class="dot" src={banana} />
-                <img class="dot" src={banana} />
+              <div className="container">
+                <img className="dot" src={banana} />
+                <img className="dot" src={banana} />
+                <img className="dot" src={banana} />
+                <img className="dot" src={banana} />
               </div>
             )}
           </div>
@@ -134,16 +133,16 @@ const ProductForm = () => {
           </div>
 
           {loadingHidden && (
-            <div class="container">
-              <img class="dot" src={banana} />
-              <img class="dot" src={banana} />
-              <img class="dot" src={banana} />
-              <img class="dot" src={banana} />
+            <div className="container">
+              <img className="dot" src={banana} />
+              <img className="dot" src={banana} />
+              <img className="dot" src={banana} />
+              <img className="dot" src={banana} />
             </div>
           )}
 
           {!loadingHidden && isMyProduct && (
-            <button className="contact_seller" onClick={setHidden}>
+            <button className="contact_seller" onClick={() => setHidden(id)}>
               Marcar como vendido
             </button>
           )}
