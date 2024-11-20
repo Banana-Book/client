@@ -24,7 +24,7 @@ const login = async (credentials) => {
       toast.error('Usuario o contraseña incorrectos');
     }
   }
-  return data;
+  return data.data;
 };
 
 export const LoginForm = () => {
