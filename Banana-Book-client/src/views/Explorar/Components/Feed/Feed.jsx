@@ -6,14 +6,20 @@ import './Feed.css';
 import { toast } from 'react-toastify';
 import instance from '../../../../api/instance';
 import { useQuery } from 'react-query';
+import { useLocation } from 'react-router-dom';
 
-const fetchPosts = async () => {
-  const { data } = await instance.get('/post');
+const fetchPosts = async (searchQuery) => {
+  const url = searchQuery ? `/post/search/${encodeURIComponent(searchQuery)}` : '/post/search';
+  const { data } = await instance.get(url);
   return data;
 };
 
 export const Feed = () => {
-  const { data } = useQuery(['posts'], fetchPosts, {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const searchQuery = queryParams.get('search');
+  
+  const { data } = useQuery(['posts', searchQuery], () => fetchPosts(searchQuery), {
     refetchOnWindowFocus: false,
     onSuccess: () => {
       toast.success('Posts cargados');
