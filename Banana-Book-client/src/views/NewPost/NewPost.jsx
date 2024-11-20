@@ -28,11 +28,13 @@ const NewPost = () => {
   };
 
   const hasErrors = () => {
+    console.log(errors);
     return Object.values(errors).some((error) => error);
   };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    console.log(titleField, descriptionField, priceField, categoryField, conditionField, imageField);
 
     onAddPostHandler(titleField, descriptionField, priceField, categoryField, conditionField, imageField);
 
@@ -116,28 +118,34 @@ const NewPost = () => {
             />
           </div>
           <div className="addInformation">
-            <input
-              name="category"
-              type="text"
-              className="addPost"
-              value={categoryField}
+            <select
+              className="addPost thick-modal-main-select"
               placeholder="Categoria"
               onChange={(e) => {
                 setCategory(e.target.value);
               }}
-            />
+            >
+              <option>Seleccione categoría</option>
+              <option value="matematica">Matemática</option>
+              <option value="fisica">Física</option>
+              <option value="ciencias">Ciencias</option>
+              <option value="programacion">Programación</option>
+              <option value="idiomas">Idiomas</option>
+              <option value="otros">Otros</option>
+            </select>
           </div>
           <div className="addInformation">
-            <input
-              name="condition"
-              type="text"
-              className="addPost"
-              value={conditionField}
-              placeholder="Estado"
+            <select
+              className="addPost thick-modal-main-select"
               onChange={(e) => {
                 setCondition(e.target.value);
               }}
-            />
+            >
+              <option>Seleccione condicion</option>
+              <option value="como nuevo">Como nuevo</option>
+              <option value="buena">Buena</option>
+              <option value="mala">Mala</option>
+            </select>
           </div>
           <div className="addImage">
             <p>Agregar Imagen</p>
