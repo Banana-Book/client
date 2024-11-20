@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ProductForm.css';
 import profileIcon from '../../../assets/img/profileIcon.png';
 
@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import instance from '../../../api/instance';
 import { jwtDecode } from 'jwt-decode';
+import { toast } from 'react-toastify';
 
 const fetchProduct = async (id) => {
   const { data } = await instance.get(`/post/${id}`);
@@ -15,30 +16,32 @@ const fetchProduct = async (id) => {
 const ProductForm = () => {
   const { id } = useParams();
 
+  const [loading, setLoading] = useState(false);
+
   const sendEmail = async () => {
+    setLoading(true);
     try {
-      console.log('sendEmail');
       const token = window.localStorage.getItem(import.meta.env.VITE_TOKEN_KEY);
       const decodecToken = jwtDecode(token);
       const emailSelf = decodecToken.email;
-      console.log(data);
       const emailData = {
         to: data?.user?.email,
         subject: 'Interesado en tu publicación',
         text: `Hola, soy ${emailSelf},estoy interesado en tu publicación ${data?.title}, me gustaría saber más detalles.`,
       };
-      console.log(emailData);
 
       await instance.post('/post/send-email', emailData);
+      toast.success('Correo enviado');
     } catch (error) {
-      console.error(error);
+      toast.error('Error al enviar el correo');
+    } finally {
+      setLoading(false);
     }
   };
   const { data } = useQuery(['product', id], () => fetchProduct(id), {
     enabled: !!id,
     refetchOnWindowFocus: false,
   });
-  console.log(data);
 
   return (
     <div className="Product_view">
@@ -58,8 +61,21 @@ const ProductForm = () => {
               <label className="price"> ${data?.price}</label>
             </div>
           </div>
+
           <div className="button_comprar">
-            <button className="comprar">Comprar</button>
+            {!loading && (
+              <button className="comprar" onClick={sendEmail}>
+                Contactar al vendedor
+              </button>
+            )}
+            {loading && (
+              <div class="container">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+              </div>
+            )}
           </div>
         </div>
         <div className="product_description">
@@ -80,11 +96,6 @@ const ProductForm = () => {
             <img className="profile_icon" src={profileIcon} alt="profileIcon" />
             <label className="seller">{`${data?.user?.name} ${data?.user?.lastName}`}</label>
           </div>
-        </div>
-        <div className="contact_seller">
-          <button className="contact" onClick={sendEmail}>
-            Contactar al vendedor
-          </button>
         </div>
       </div>
     </div>

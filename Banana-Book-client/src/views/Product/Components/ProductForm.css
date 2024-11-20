@@ -1,186 +1,227 @@
-div.Product{
-    width: 50%;
-    float: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10%;
+div.Product {
+  width: 50%;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
 }
 
 div.Product > h1 {
-    font-size: 2em;
-    font-weight: 600;
-    margin-bottom: 10px;
+  font-size: 2em;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 div.postImage {
-    width: 40%;
-    height: 100%;
-    border-radius: 10%;
+  width: 40%;
+  height: 100%;
+  border-radius: 10%;
 }
 
 div.Product_info {
-    width: 50%;
-    float: right;
-    height: auto;
-    position: relative;
-    margin-top: 5%;
+  width: 50%;
+  float: right;
+  height: auto;
+  position: relative;
+  margin-top: 5%;
 }
 
 div.top_product {
-    width: 60%;
-    height: auto;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    display: flex;
-    flex-direction: row;
-    gap: 38%;
+  width: 60%;
+  height: auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  display: flex;
+  flex-direction: row;
+  gap: 38%;
 }
 
 div.price_indicator {
-    height: auto;
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content:flex-end;
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 div.price_show {
-    background-color: #FFDF94;
-    width: 100%;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    height: 1rem;
-    padding: 1rem;
-    border-radius: 10px;
-
+  background-color: #ffdf94;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
 }
 
 label.price {
-    width: 6rem;
-    height: 1rem;
-    font-size: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 6rem;
+  height: 1rem;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-div.product_description{
-    width: 60%;
-    height: auto;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
+div.product_description {
+  width: 60%;
+  height: auto;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
 }
 
 div.description_box {
-    background-color: #FFDF94;
-    width: 95%;
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    height: 8rem;
-    padding: 1rem;
-    border-radius: 10px;
-    margin-top: 1rem;
+  background-color: #ffdf94;
+  width: 95%;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  height: 8rem;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 1rem;
 }
 
 label.description_product {
-    width: 60%;
-    height: 8rem;
-    margin: 0.5rem;
+  width: 60%;
+  height: 8rem;
+  margin: 0.5rem;
 }
 
 div.subject_condition {
-    width: 70%;
-    height: auto;
-    text-align: left;
-    display: flex;
-    margin-top: 5%;
-    justify-content: space-between;
-    gap: 5%;
+  width: 70%;
+  height: auto;
+  text-align: left;
+  display: flex;
+  margin-top: 5%;
+  justify-content: space-between;
+  gap: 5%;
 }
 
 h1.subject_word {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 h1.condition_word {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 label.subject {
-    width: 6rem;
-    font-size: 1rem;
-    display: flex;
-    justify-content: left;
+  width: 6rem;
+  font-size: 1rem;
+  display: flex;
+  justify-content: left;
 }
 
 label.condition {
-    width: 6rem;
-    font-size: 1rem;
-    display: flex;
-    justify-content: left;
-    text-align: left;
+  width: 6rem;
+  font-size: 1rem;
+  display: flex;
+  justify-content: left;
+  text-align: left;
 }
 
 div.button_comprar {
-    width: 40%;
-    height: auto;
-    display: flex;
-    justify-content: flex-end;
-    align-items: self-end;
+  width: 40%;
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: self-end;
 }
 
-button.comprar{
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    font-weight: bold;
+button.comprar {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  font-weight: bold;
 }
 
 div.seller_info {
-    width: 60%;
-    height: auto;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10%;
+  width: 60%;
+  height: auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10%;
 }
 
 div.seller_box {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10%;
 }
 
 img.profile_icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 label.seller {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 div.contact_seller {
-    width: 60%;
-    height: auto;
-    display: flex;
-    justify-content: center;
+  width: 60%;
+  height: auto;
+  display: flex;
+  justify-content: center;
 }
 
-button.contact{
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    font-weight: bold;
+button.contact {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  column-gap: 10px;
+}
+
+.container .dot {
+  width: 3rem;
+  height: 3rem;
+  background-color: black;
+  border-radius: 50%;
+  animation: loading 1s infinite alternate;
+}
+
+.container .dot:nth-child(1) {
+  background-color: #fbbc05;
+  animation-delay: -0.25s;
+}
+
+.container .dot:nth-child(2) {
+  background-color: #fbbc05;
+  animation-delay: -0.5s;
+}
+
+.container .dot:nth-child(3) {
+  background-color: #fbbc05;
+  animation-delay: -0.75s;
+}
+
+.container .dot:nth-child(4) {
+  background-color: #fbbc05;
+  animation-delay: -1s;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(5px);
+  }
 }
