@@ -192,28 +192,22 @@ button.contact {
 .container .dot {
   width: 3rem;
   height: 3rem;
-  background-color: black;
-  border-radius: 50%;
   animation: loading 1s infinite alternate;
 }
 
 .container .dot:nth-child(1) {
-  background-color: #fbbc05;
   animation-delay: -0.25s;
 }
 
 .container .dot:nth-child(2) {
-  background-color: #fbbc05;
   animation-delay: -0.5s;
 }
 
 .container .dot:nth-child(3) {
-  background-color: #fbbc05;
   animation-delay: -0.75s;
 }
 
 .container .dot:nth-child(4) {
-  background-color: #fbbc05;
   animation-delay: -1s;
 }
 

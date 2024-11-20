@@ -7,6 +7,7 @@ import { useQuery } from 'react-query';
 import instance from '../../../api/instance';
 import { jwtDecode } from 'jwt-decode';
 import { toast } from 'react-toastify';
+import banana from '../../../assets/img/banana.png';
 
 const fetchProduct = async (id) => {
   const { data } = await instance.get(`/post/${id}`);
@@ -70,10 +71,10 @@ const ProductForm = () => {
             )}
             {loading && (
               <div class="container">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
+                <img class="dot" src={banana} />
+                <img class="dot" src={banana} />
+                <img class="dot" src={banana} />
+                <img class="dot" src={banana} />
               </div>
             )}
           </div>
