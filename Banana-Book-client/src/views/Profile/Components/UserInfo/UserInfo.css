@@ -2,9 +2,9 @@ div.userData{
     display: flex;
     float: right;
     flex-direction: column;
-    margin-top: 5%;
     width: 50%;
-    height: 40vh;
+    height: auto;
+    justify-content: center;
     gap:5%;
 
 }

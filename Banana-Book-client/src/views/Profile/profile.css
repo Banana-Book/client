@@ -1,5 +1,15 @@
 section.profile {
     background-color: #FFF3C9;
-    height: 92.5vh;
-    width: 100%;
-    }
+    min-height: 100vh;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+    
+    gap: 20px; 
+    padding: 20px; 
+}
+
+.info {
+    
+    height: auto;
+}
