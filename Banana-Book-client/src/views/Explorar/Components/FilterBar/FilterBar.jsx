@@ -12,7 +12,7 @@ export const FilterBar = () => {
             <h3> Filtros </h3>
             <hr/>
             <div className="filter-container">
-                <h4>Materia :</h4>
+                <h4>Categoría:</h4>
 
                 <label className="materiaLbl">Calculo
                     <input type="checkbox" value="calculo"/>
@@ -29,7 +29,7 @@ export const FilterBar = () => {
                     <span className="checkmark"></span>
                 </label>
 
-                <h4>Condicion :</h4>
+                <h4>Condicion:</h4>
 
                 <label className="condicionLbl">Nuevo
                     <input type="checkbox" value="nuevo"/>
@@ -42,7 +42,7 @@ export const FilterBar = () => {
                 </label>
 
                 <h4>Precio maximo: </h4>
-                <input 
+                <input
                     type='number'
                     placeholder="Max - $"
                     value={maxPriceField}
