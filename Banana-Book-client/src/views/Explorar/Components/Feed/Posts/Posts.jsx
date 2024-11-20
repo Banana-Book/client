@@ -13,6 +13,7 @@ export const Posts = ({ posts = [] }) => {
           title={post.title}
           price={post.price}
           user={`${post?.user?.name} ${post?.user?.lastName}`}
+          email={post?.user?.email}
           category={post.category}
           image={post.image}
         />
