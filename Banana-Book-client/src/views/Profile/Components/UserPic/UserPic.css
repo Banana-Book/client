@@ -1,5 +1,5 @@
 div.user-profile-pic {
-    width: 50%;
+    width: 40%;
     float: left;
     display: flex;
     justify-content: center;
@@ -12,7 +12,7 @@ figure.UserProfilePic{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 15%;
+    margin-top: 5%;
 }
 img.user-pic{
     height: 100%;

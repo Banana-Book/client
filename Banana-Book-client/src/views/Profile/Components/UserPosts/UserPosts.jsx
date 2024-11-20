@@ -40,6 +40,27 @@ const UserPosts = () => {
         getPosts();
     }, []);
 
+    async function deletePost(id) {
+        const token = localStorage.getItem('Banana_Book_key');
+        
+        const confirmDelete = window.confirm("¿Estás seguro de que deseas eliminar este post?");
+        if (!confirmDelete) return;
+
+        axios.delete(`${baseUrl}/post/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then((res) => {
+                console.log(res);
+                getPosts();
+            })
+            .catch((err) => {
+                console.log(err);
+            }
+        );
+    }
+
     return (
         <div className="profile-feed">
             {posts.map((post) => (
@@ -50,7 +71,7 @@ const UserPosts = () => {
                     <div className="post-buttons">
                         <button className="sell">Vender</button>
                         <button className="edit">Editar</button>
-                        <button className="delete">Eliminar</button>
+                        <button className="delete" onClick={() => {deletePost(post._id)}}>Eliminar</button>
                     </div>
                 </div>
             ))}

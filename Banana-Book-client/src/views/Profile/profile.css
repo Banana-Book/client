@@ -3,6 +3,13 @@ section.profile {
     min-height: 100vh;
     display: flex; 
     flex-direction: column; 
+    justify-content: space-between;
+    
     gap: 20px; 
     padding: 20px; 
+}
+
+.info {
+    
+    height: auto;
 }

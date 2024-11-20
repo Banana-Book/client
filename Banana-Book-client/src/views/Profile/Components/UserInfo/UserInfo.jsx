@@ -17,7 +17,6 @@ export const UserInfo = () => {
   });
 
   return (
-    <div className="user-info">
       <div className="userData">
         <label className="reference">Nombre</label>
         <label className="value">{data?.name}</label>
@@ -26,7 +25,6 @@ export const UserInfo = () => {
         <label className="reference">Correo Electrónico</label>
         <label className="value">{data?.email}</label>
       </div>
-    </div>
   );
 };
 
