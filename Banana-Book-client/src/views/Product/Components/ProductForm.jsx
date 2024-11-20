@@ -1,27 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import './ProductForm.css';
 import profileIcon from '../../../assets/img/profileIcon.png';
-
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import instance from '../../../api/instance';
 import { jwtDecode } from 'jwt-decode';
 import { toast } from 'react-toastify';
+import LoadingScreen from '../../../Components/Loading/LoadingScreen';
 import banana from '../../../assets/img/banana.png';
-
-const fetchProduct = async (id) => {
-  const { data } = await instance.get(`/post/${id}`);
-  return data;
-};
 
 const ProductForm = () => {
   const { id } = useParams();
 
   const [loading, setLoading] = useState(false);
   const [loadingHidden, setLoadingHidden] = useState(false);
+  const [loadingGeneralInfo, setLoadingGeneralInfo] = useState(false);
   const [isMyProduct, setIsMyProduct] = useState(false);
   const navigate = useNavigate();
 
+  const fetchProduct = async (id) => {
+    setLoadingGeneralInfo(true);
+    try {
+      const { data } = await instance.get(`/post/${id}`);
+
+      return data;
+    } catch (error) {
+      toast.error('Error al cargar el producto');
+    } finally {
+      setLoadingGeneralInfo(false);
+    }
+  };
   const setHidden = async () => {
     setLoadingHidden(true);
     try {
@@ -66,6 +74,10 @@ const ProductForm = () => {
       setIsMyProduct(data?.user?.email === decodecToken.email);
     }
   }, [data]);
+
+  if (loadingGeneralInfo) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="Product_view">
