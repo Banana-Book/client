@@ -22,12 +22,15 @@ const ProductForm = () => {
     setLoadingGeneralInfo(true);
     try {
       const { data } = await instance.get(`/post/${id}`);
-      console.log(data);
       if (data.hidden) {
         toast.error('Producto no encontrado');
         navigate('/explorar');
         return;
       }
+      const token = window.localStorage.getItem(import.meta.env.VITE_TOKEN_KEY);
+      const decodecToken = jwtDecode(token);
+      const emailSelf = decodecToken.email;
+      setIsMyProduct(emailSelf === data.user.email);
       return data;
     } catch (error) {
       toast.error('Error al cargar el producto');
@@ -39,7 +42,7 @@ const ProductForm = () => {
     setLoadingHidden(true);
     try {
       console.log(id);
-      const response = await instance.patch(`/post/${id}/hidden`);
+      await instance.patch(`/post/${id}/hidden`);
       toast.success('Producto marcado como vendido');
     } catch (error) {
       toast.error('Error al marcar como vendido');
