@@ -8,6 +8,7 @@ import LoadingScreen from '../../../../Components/Loading/LoadingScreen';
 import { toast } from 'react-toastify';
 import instance from '../../../../api/instance';
 import { useQuery } from 'react-query';
+import { useLocation } from 'react-router-dom';
 
 export const Feed = ({filters}) => {
   const [loading, setLoading] = useState(false);

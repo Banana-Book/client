@@ -35,7 +35,7 @@ export const FilterBar = ({ onFilterChange }) => {
                 <h3> Filtros </h3>
                 <hr/>
                 <div className="filter-container">
-                    <h4>Materia :</h4>
+                    <h4>Materia:</h4>
 
                     <label className="materiaLbl">Calculo
                         <input type="checkbox" value="calculo" onChange={() => {
@@ -61,7 +61,7 @@ export const FilterBar = ({ onFilterChange }) => {
                         <span className="checkmark"></span>
                     </label>
 
-                    <h4>Condicion :</h4>
+                <h4>Condicion:</h4>
 
                     <label className="condicionLbl">Nuevo
                         <input type="checkbox" value="nuevo" onChange={() => {
