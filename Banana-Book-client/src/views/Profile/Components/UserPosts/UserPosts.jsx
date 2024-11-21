@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import './UserPosts.css';
+import { useNavigate } from "react-router-dom";
 
 const UserPosts = () => {
 
     const baseUrl = import.meta.env.VITE_APP_BASE_URL
     const [posts, setPosts] = useState([]);
+    const navigate = useNavigate();
 
     const fetchProfile = async (token) => {
         const {data} = await axios.get(`${baseUrl}/user/profile`, {
@@ -70,7 +72,7 @@ const UserPosts = () => {
                     {post.image && <img src={post.image} alt="Post" />}
                     <div className="post-buttons">
                         <button className="sell">Vender</button>
-                        <button className="edit">Editar</button>
+                        <button className="edit" onClick={()=> {navigate(`/profile/editPost/${post._id}`)}}>Editar</button>
                         <button className="delete" onClick={() => {deletePost(post._id)}}>Eliminar</button>
                     </div>
                 </div>
