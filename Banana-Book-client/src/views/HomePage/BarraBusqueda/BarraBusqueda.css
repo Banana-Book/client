@@ -26,6 +26,10 @@ div.barra-buscar input{
     outline: none;
 }
 
+.buscar-btn{
+    all: unset;
+}
+
 ::placeholder{
     Color: #FFDF94;
     font-size: 1.5rem;
