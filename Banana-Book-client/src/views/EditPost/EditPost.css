@@ -1,43 +1,51 @@
-section.new-post {
+section.edit-post {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   background-color: #fff3c9;
 }
 
-div.newpostdiv {
-  width: auto;
+form.editForm{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+div.editpostdiv {
+  width: 70%;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 0;
   border-radius: 20px;
-  margin-top: 1%;
+  gap: 2.5rem;
 
   margin-left: 5%;
   margin-right: 5%;
 }
-div.addImage {
+div.editImage {
   width: 40%;
   height: auto;
   background-color: #604100;
   border-radius: 20px;
   padding: 2rem 1rem;
-  margin-top: 5%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
 }
 
-div.addImage > p {
+div.editImage > p {
   color: #fff3c9;
   font-size: 2rem;
 }
 
-div.addImage > input {
+div.editImage > input {
   color: #fff3c9;
   font-family: 'Inika', sans-serif;
 }
@@ -49,19 +57,31 @@ div.addImage > input {
   border-radius: 10px;
   font-size: 1rem;
   font-family: 'Inika', sans-serif;
-  margin-top: 2rem;
 }
 
-div.addInformation {
+div.editInformation {
   width: 50%;
   height: auto;
   display: flex;
+  gap: 1rem;
   align-items: center;
   justify-content: center;
   margin: 0;
 }
 
-input.addPost {
+input.editPost {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  font-family: 'Inika', sans-serif;
+  background-color: #ffdf94;
+  font-weight: bold;
+}
+
+select.editPost {
   width: 82%;
   height: 100%;
   border: none;
@@ -71,24 +91,10 @@ input.addPost {
   font-family: 'Inika', sans-serif;
   background-color: #ffdf94;
   font-weight: bold;
-  margin-top: 5%;
 }
 
-select.addPost {
-  width: 82%;
-  height: 100%;
-  border: none;
-  border-radius: 10px;
-  padding: 0.5rem;
+label {
   font-size: 1.5rem;
-  font-family: 'Inika', sans-serif;
-  background-color: #ffdf94;
-  font-weight: bold;
-  margin-top: 5%;
-}
-
-label.categoria {
-  font-size: 1.2rem;
   justify-content: center;
   align-items: center;
   font-family: 'Inika', sans-serif;
@@ -96,19 +102,18 @@ label.categoria {
   font-weight: bold;
 }
 
-input.addPost::placeholder {
+input.editPost::placeholder {
   color: #604100;
   font-weight: bold;
   opacity: 0.5;
   font-family: 'Inika', sans-serif;
 }
 
-div.PostInfo {
+div.EditInfo {
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 5%;
 }
