@@ -9,13 +9,13 @@ import { toast } from 'react-toastify';
 import instance from '../../../../api/instance';
 import { useQuery } from 'react-query';
 
-export const Feed = () => {
+export const Feed = ({filters}) => {
   const [loading, setLoading] = useState(false);
-
-  const fetchPosts = async () => {
+  
+  const fetchPosts = async (filters) => {
     setLoading(true);
     try {
-      const { data } = await instance.get('/post');
+      const { data } = await instance.get('/post',{ params: filters });
       return data;
     } catch (error) {
       console.log(error);
@@ -23,7 +23,7 @@ export const Feed = () => {
       setLoading(false);
     }
   };
-
+  
   const { data } = useQuery(['posts'], fetchPosts, {
     refetchOnWindowFocus: false,
     onSuccess: () => {},
@@ -31,6 +31,8 @@ export const Feed = () => {
       toast.error('Error al cargar los posts');
     },
   });
+
+
 
   if (loading) {
     return <LoadingScreen />;
