@@ -3,13 +3,13 @@ import { useState, useEffect } from 'react';
 import './FilterBar.css';
 
 export const FilterBar = ({ onFilterChange }) => {
-  const [categories, setCategories] = useState([]);
+  const [category, setCategories] = useState([]);
   const [price, setPrice] = useState('');
   const [condition, setConditions] = useState([]);
 
   useEffect(() => {
     handleSearch();
-  }, [price, categories, condition]);
+  }, [price, category, condition]);
 
   const toggleCategory = (category) => {
     setCategories((prevCategories) =>
@@ -27,7 +27,7 @@ export const FilterBar = ({ onFilterChange }) => {
   };
   const handleSearch = () => {
     onFilterChange({
-      categories,
+      category,
       price,
       condition,
     });
