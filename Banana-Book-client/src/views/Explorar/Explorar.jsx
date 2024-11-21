@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Explorar.css'
 
 import FilterBar from './Components/FilterBar/FilterBar';

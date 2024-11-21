@@ -10,22 +10,24 @@ import instance from '../../../../api/instance';
 import { useQuery } from 'react-query';
 import { useLocation } from 'react-router-dom';
 
+const fetchPosts = async (filters, title) => {
+  try {
+    const { data } = await instance.get('/post',{ params: {...filters,title} });
+    return data;
+  } catch (error) {
+    console.log(error);
+  } finally {
+  }
+};
 export const Feed = ({filters}) => {
   const [loading, setLoading] = useState(false);
   
-  const fetchPosts = async (filters) => {
-    setLoading(true);
-    try {
-      const { data } = await instance.get('/post',{ params: filters });
-      return data;
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const title = queryParams.get('search');
   
-  const { data } = useQuery(['posts'], fetchPosts, {
+  
+  const { data } = useQuery(['posts', filters, title], () => fetchPosts(filters, title), {
     refetchOnWindowFocus: false,
     onSuccess: () => {},
     onError: () => {

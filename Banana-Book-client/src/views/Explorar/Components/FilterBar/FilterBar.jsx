@@ -7,6 +7,10 @@ export const FilterBar = ({ onFilterChange }) => {
     const [categories, setCategories] = useState([]);
     const [price, setPrice] = useState('');
     const [condition, setConditions] = useState([]);
+    
+    useEffect(() => {
+        handleSearch();
+    }, [price, categories, condition]);
 
     const toggleCategory = (category) => {
         setCategories((prevCategories) =>
@@ -38,44 +42,29 @@ export const FilterBar = ({ onFilterChange }) => {
                     <h4>Materia:</h4>
 
                     <label className="materiaLbl">Calculo
-                        <input type="checkbox" value="calculo" onChange={() => {
-                            toggleCategory('calculo');
-                            handleSearch();
-                        }}/>
+                        <input type="checkbox" value="calculo" onChange={() => toggleCategory('calculo')}/>
                         <span className="checkmark"></span>
                     </label>
                     
                     <label className="materiaLbl">Fisica
-                        <input type="checkbox" value="fisica" onChange={() => {
-                            toggleCategory('fisica')
-                            handleSearch();    
-                        }}/>
+                        <input type="checkbox" value="fisica" onChange={() => toggleCategory('fisica')}/>
                         <span className="checkmark"></span>
                     </label>
                     
                     <label className="materiaLbl">Politica
-                        <input type="checkbox" value="politica" onChange={() => {
-                            toggleCategory('politica')
-                            handleSearch();    
-                        }}/>
+                        <input type="checkbox" value="politica" onChange={() => toggleCategory('politica')}/>
                         <span className="checkmark"></span>
                     </label>
 
                 <h4>Condicion:</h4>
 
                     <label className="condicionLbl">Nuevo
-                        <input type="checkbox" value="nuevo" onChange={() => {
-                            toggleCondition('nuevo')
-                            handleSearch();    
-                        }}/>
+                        <input type="checkbox" value="nuevo" onChange={() => toggleCondition('nuevo')}/>
                         <span className="checkmark"></span>
                     </label>
                     
                     <label className="condicionLbl">Usado
-                        <input type="checkbox" value="usado" onChange={() => {
-                            toggleCondition('usado')
-                            handleSearch();    
-                        }}/>
+                        <input type="checkbox" value="usado" onChange={() => toggleCondition('usado')}/>
                         <span className="checkmark"></span>
                     </label>
 
@@ -85,9 +74,7 @@ export const FilterBar = ({ onFilterChange }) => {
                         placeholder="Max - $"
                         value={price}
                         onChange={(e) => {
-                            setPrice(e.target.value)
-                            handleSearch();    
-                        }}
+                            setPrice(e.target.value)   }}
                     />
                 </div>
             </form>
