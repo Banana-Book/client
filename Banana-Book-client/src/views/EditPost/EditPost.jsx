@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { useConfigContext } from '../../contexts/ConfigContext';
 import instance from '../../api/instance';
 import { useParams, useNavigate } from 'react-router-dom';
+import LoadingScreen from '../../Components/Loading/LoadingScreen';
 
 const EditPost = () => {
   const [titleField, setTitle] = useState('');
@@ -13,6 +14,7 @@ const EditPost = () => {
   const [categoryField, setCategory] = useState('');
   const [conditionField, setCondition] = useState('');
   const [imageField, setImage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const { startLoading, stopLoading } = useConfigContext();
   const navigate = useNavigate();
@@ -20,6 +22,7 @@ const EditPost = () => {
 
   async function getPost() {
     const token = localStorage.getItem('Banana_Book_key');
+    setLoading(true);
 
     instance
       .get(`/post/${id}`, {
@@ -34,12 +37,11 @@ const EditPost = () => {
         setCategory(res.data.category);
         setCondition(res.data.condition);
         setImage(res.data.image);
-      }
-      )
+      })
       .catch((err) => {
         toast.error('Error al cargar el post');
-      }
-    );
+      })
+      .finally(() => setLoading(false));
   }
 
   useEffect(() => {
@@ -107,9 +109,11 @@ const EditPost = () => {
     await editPost(title, description, price, category, condition, image);
   };
 
+  if (loading) return <LoadingScreen />;
+
   return (
     <section className="edit-post">
-      <form onSubmit={onSubmitHandler} className='editForm'>
+      <form onSubmit={onSubmitHandler} className="editForm">
         <div className="editpostdiv">
           <div className="editInformation">
             <label>Titulo</label>
