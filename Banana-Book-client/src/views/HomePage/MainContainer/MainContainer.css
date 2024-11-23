@@ -1,26 +1,47 @@
-div.content-container h1{
-    font-family: 'Neucha';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 96px;
-    line-height: 106px;
-    
-    color: #000000;
-    }
-    
-    .content-container{
-        margin-left: 1rem;
-        margin-top: 5%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        z-index: 10;
-        gap: 10%;
-        top: 10%;
-    }
-    
-    #logo-landing{
-        width: auto;
-        height: auto;
-    }
+div.content-container h1 {
+  font-family: 'Neucha';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 96px;
+  line-height: 106px;
+
+  color: #000000;
+}
+
+@media (max-width: 1200px) {
+  div.content-container h1 {
+    font-size: 72px;
+    line-height: 82px;
+  }
+}
+
+@media (max-width: 768px) {
+  div.content-container h1 {
+    font-size: 48px;
+    line-height: 58px;
+  }
+}
+
+@media (max-width: 480px) {
+  div.content-container h1 {
+    font-size: 32px;
+    line-height: 42px;
+  }
+}
+
+.content-container {
+  margin-left: 1rem;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  gap: 10%;
+  top: 10%;
+}
+
+#logo-landing {
+  width: auto;
+  height: auto;
+}
