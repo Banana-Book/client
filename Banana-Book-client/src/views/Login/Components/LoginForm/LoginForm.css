@@ -1,89 +1,132 @@
-form.login-form>div{
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
+form.login-form > div {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
 }
 
-button{
-    border: solid 1px #604100;
-    background-color: #604100;
-    color: #FFDF94;
+button {
+  border: solid 1px #604100;
+  background-color: #604100;
+  color: #ffdf94;
 
-    font-size: 1.25rem;
-    font-weight: bold;
-    cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
 
-    padding: 0.75rem;
-    border-radius: 10px;
+  padding: 0.75rem;
+  border-radius: 10px;
 }
 
-button > a{
-    color: #FFDF94;
-    text-decoration: none;
-}
+@media (max-width: 768px) {
+  form.login-form > label > div,
+  form.login-form > label > div > input,
+  form.login-form > label > div > input::placeholder {
+    width: 100%;
+  }
 
-form.login-form{
-    display: flex;
-    justify-content: center;
+  form.login-form > div > ul {
     flex-direction: column;
-    align-items: center;
+    gap: 1rem;
+  }
 
-    margin-top: 2rem;
-    gap: 1.5rem;
-    padding-bottom: 2rem;
+  form.login-form {
+    padding: 1rem;
+  }
+}
+button > a {
+  color: #ffdf94;
+  text-decoration: none;
 }
 
-form.login-form > label{
-    display: flex;
-    flex-direction: column;
+form.login-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
-    font-size: 32px;
-    color: #604100;
-    font-weight: bold;
-    
-    gap: 5px;
+  margin-top: 2rem;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+form.login-form > label {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 32px;
+  color: #604100;
+  font-weight: bold;
+
+  gap: 5px;
+}
+
+@media (max-width: 768px) {
+  form.login-form > label {
+    font-size: 24px;
+    gap: 3px;
+  }
 }
 
 form.login-form > label > div {
-    width: 639px;
-    height: 63px;
+  width: 639px;
+  height: 63px;
 
-    justify-content: center;
+  justify-content: center;
 
-    background: #FFF3C9;
-    border-radius: 10px;
+  background: #fff3c9;
+  border-radius: 10px;
 
-    text-align: center;
+  text-align: center;
 }
 
-form.login-form > label > div > input{
-    width: 610px;
-    height: 63px;
-
-    font-size: 28px;
-    color: #2d1919;
-    border: 0;
-    background-color: transparent;
-    outline: none;
+@media (max-width: 768px) {
+  form.login-form > label > div {
+    width: 100%;
+    height: auto;
+  }
 }
 
-form.login-form > label > div > input::placeholder{
-    width: 610px;
-    height: 63px;
+form.login-form > label > div > input {
+  width: 610px;
+  height: 63px;
 
-    font-size: 28px;
-    color: #2d1919;
-    border: 0;
-    background-color: transparent;
-    outline: none;
+  font-size: 28px;
+  color: #2d1919;
+  border: 0;
+  background-color: transparent;
+  outline: none;
 }
 
-
-form.login-form > div > ul{
-
-    margin-top: 30px;
-    display: flex;
-
-    gap: 4rem;
+@media (max-width: 768px) {
+  form.login-form > label > div > input {
+    width: 100%;
+    height: auto;
+    font-size: 24px;
+  }
 }
 
+form.login-form > label > div > input::placeholder {
+  width: 610px;
+  height: 63px;
+  padding: 1rem;
+  font-size: 28px;
+  color: #2d1919;
+  border: 0;
+  background-color: transparent;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  form.login-form > label > div > input::placeholder {
+    width: 100%;
+    height: auto;
+    font-size: 24px;
+  }
+}
+
+form.login-form > div > ul {
+  margin-top: 30px;
+  display: flex;
+
+  gap: 4rem;
+}
