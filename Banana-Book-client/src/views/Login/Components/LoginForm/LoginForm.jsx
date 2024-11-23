@@ -45,8 +45,8 @@ export const LoginForm = () => {
   });
 
   const errors = {
-    email: !emailField || !validateEmail(emailField),
-    password: !passwordField || !validatePassword(passwordField),
+    email: !emailField,
+    password: !passwordField,
   };
 
   const hasErrors = () => {
@@ -91,7 +91,7 @@ export const LoginForm = () => {
         </div>
       </label>
       <div>
-        <button id="login" type="submit" disabled={hasErrors() || isLoading}>
+        <button id="login" type="submit" disabled={isLoading}>
           Iniciar Sesión
         </button>
         <button id="register">
