@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Product.css';
 import ProductForm from './Components/ProductForm';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Product = () => {
   const { id } = useParams();
+  
 
   return (
     <section className="product">

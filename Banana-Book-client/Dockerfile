@@ -19,12 +19,13 @@ RUN node --run build
 # Stage 2: Set up NGINX to serve the app
 FROM nginx:alpine
 
-# Copy the built files from the build stage to the NGINX HTML folder
-COPY --from=build /app/dist /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
 
-# Copy custom NGINX configuration if you have one
-# COPY nginx.conf /etc/nginx/nginx.conf
+RUN rm -rf ./*
 
+COPY --from=build /app/dist .
+
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 # Expose port 80 to access the app
 EXPOSE 80
 
