@@ -28,12 +28,16 @@ const ProductForm = () => {
         return;
       }
       const token = window.localStorage.getItem(import.meta.env.VITE_TOKEN_KEY);
+      if (!token) {
+        return data;
+      }
       const decodecToken = jwtDecode(token);
       const emailSelf = decodecToken.email;
       setIsMyProduct(emailSelf === data.user.email);
       return data;
     } catch (error) {
       toast.error('Error al cargar el producto');
+      console.log(error);
     } finally {
       setLoadingGeneralInfo(false);
     }
@@ -54,8 +58,9 @@ const ProductForm = () => {
 
   const sendEmail = async () => {
     setLoading(true);
+
+    const token = window.localStorage.getItem(import.meta.env.VITE_TOKEN_KEY);
     try {
-      const token = window.localStorage.getItem(import.meta.env.VITE_TOKEN_KEY);
       const decodecToken = jwtDecode(token);
       const emailSelf = decodecToken.email;
       const emailData = {
@@ -67,7 +72,12 @@ const ProductForm = () => {
       await instance.post('/post/send-email', emailData);
       toast.success('Correo enviado');
     } catch (error) {
-      toast.error('Error al enviar el correo');
+      if (!token) {
+        toast.error('Debes iniciar sesión para contactar al vendedor');
+        navigate('/explorar');
+      } else {
+        toast.error('Error al enviar el correo');
+      }
     } finally {
       setLoading(false);
     }

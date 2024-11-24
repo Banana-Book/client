@@ -15,10 +15,8 @@ export const Feed = ({ filters }) => {
     try {
       setLoading(true);
       const { data } = await instance.get('/post', { params: { ...filters, title } });
-      console.log(data);
       return data;
     } catch (error) {
-      console.log(error);
     } finally {
       setLoading(false);
     }
