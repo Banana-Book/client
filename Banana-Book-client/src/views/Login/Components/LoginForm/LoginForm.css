@@ -87,7 +87,7 @@ form.login-form > label > div {
 }
 
 form.login-form > label > div > input {
-  width: 610px;
+  width: 100%;
   height: 63px;
 
   font-size: 28px;
@@ -96,11 +96,9 @@ form.login-form > label > div > input {
   background-color: transparent;
   outline: none;
 }
-
 @media (max-width: 768px) {
   form.login-form > label > div > input {
     width: 100%;
-    height: auto;
     font-size: 24px;
   }
 }
