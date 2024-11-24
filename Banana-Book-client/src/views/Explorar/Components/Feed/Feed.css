@@ -1,4 +1,5 @@
 section.explorar-page > main.feed-wrapper {
+  width: 100%;
   grid-area: content;
   display: flex;
   flex-direction: column;

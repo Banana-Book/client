@@ -1,11 +1,11 @@
-div.barra-buscar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  z-index: 10;
-  margin-top: 150px;
+div.barra-buscar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    z-index: 10;
+    padding: 1rem;
 }
 
 div.barra-buscar img {
@@ -26,8 +26,10 @@ div.barra-buscar input {
   outline: none;
 }
 
-.buscar-btn {
-  all: unset;
+.buscar-btn{
+    all: unset;
+    display: flex;
+    align-items: center;
 }
 
 ::placeholder {
@@ -85,4 +87,12 @@ div.barra-buscar input {
   opacity: 0.5;
 
   font-family: 'Inika', serif;
+}
+@media (max-width: 768px) {
+    div.barra-buscar {
+        margin-top: 0;
+    }
+    div.barra-buscar input{
+        width: 90%;
+    }
 }
