@@ -1,13 +1,29 @@
-section.explorar-page{
+section.explorar-page {
+    width: 100%;
     background-color: #FFF3C9;
-
     min-height: 100vh;
-    padding: 30px;
-
     display: grid;
-
     grid-template-columns: 30% 70%;
     grid-template-rows: auto;
-
     grid-template-areas: "navbar content";
+}
+
+/* Media query for smaller screens (e.g., tablets) */
+@media (max-width: 768px) {
+    section.explorar-page {
+        grid-template-columns: 1fr; /* Stack the columns */
+        grid-template-areas: 
+            "navbar"
+            "content"; /* Stack the content and navbar */
+    }
+}
+
+/* Media query for mobile screens */
+@media (max-width: 480px) {
+    section.explorar-page {
+        grid-template-columns: 1fr; /* Stack the columns */
+        grid-template-areas: 
+            "navbar"
+            "content"; /* Stack the content and navbar */
+    }
 }
