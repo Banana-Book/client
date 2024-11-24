@@ -61,7 +61,6 @@ const RegisterForm = () => {
       console.log(response);
 
       toast.success('Usuario registrado correctamente');
-
     } catch (error) {
       console.error(error);
     } finally {

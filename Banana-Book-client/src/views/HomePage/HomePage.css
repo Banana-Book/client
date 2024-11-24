@@ -1,21 +1,34 @@
 div.home-page {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  overflow: hidden;
+  top: 0;
+}
+
+@media (max-width: 768px) {
+  div.home-page {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-/*     position: absolute; */    
-    object-fit: contain;
-    overflow: hidden;
-    top: 0;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  div.home-page {
+    flex-direction: column;
+    padding: 5px;
+  }
 }
 
 svg {
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    bottom: 0;
-    overflow: hidden;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  overflow: hidden;
 }
