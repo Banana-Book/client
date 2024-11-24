@@ -1,7 +1,7 @@
-
 section.product {
-background-color: #FFF3C9;
-height: 92.5vh;
-width: 100%;
-}
-
+    background-color: #FFF3C9;
+    min-height: 92.5vh; /* Mantiene al menos el 92.5% del alto del viewport */
+    padding: 20px; /* Evita que los márgenes de los hijos colapsen */
+    overflow: hidden; /* Garantiza que envuelva los elementos flotantes o márgenes colapsados */
+  }
+  

@@ -1,3 +1,4 @@
+/* Estructura actual */
 div.Product {
   width: 50%;
   float: left;
@@ -48,14 +49,13 @@ div.price_indicator {
 
 div.price_show {
   background-color: #ffdf94;
-  width: 100%;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  height: 1rem;
-  padding: 1rem;
-  border-radius: 10px;
+    width: 95%;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
 }
 
 label.price {
@@ -195,27 +195,95 @@ button.contact {
   animation: loading 1s infinite alternate;
 }
 
-.container .dot:nth-child(1) {
-  animation-delay: -0.25s;
-}
-
-.container .dot:nth-child(2) {
-  animation-delay: -0.5s;
-}
-
-.container .dot:nth-child(3) {
-  animation-delay: -0.75s;
-}
-
-.container .dot:nth-child(4) {
-  animation-delay: -1s;
-}
-
 @keyframes loading {
   0% {
     transform: translateY(-15px);
   }
   100% {
     transform: translateY(5px);
+  }
+}
+
+/* Ajustes para móviles (pantallas menores a 480px) */
+@media screen and (max-width: 480px) {
+  div.Product {
+    width: 100%;
+    margin-top: 5%;
+  }
+
+  div.Product > h1 {
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  div.postImage {
+    width: 80%;
+    margin: auto;
+  }
+
+  div.Product_info {
+    width: 100%;
+    margin-top: 2%;
+  }
+
+  div.top_product {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  div.price_show {
+    height: auto;
+    padding: 0.8rem;
+  }
+
+  div.product_description {
+    width: 100%;
+  }
+
+  div.description_box {
+    height: auto;
+    padding: 0.8rem;
+  }
+
+  label.description_product {
+    width: 100%;
+    height: auto;
+    font-size: 1rem;
+  }
+
+  div.subject_condition {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  div.button_comprar {
+    width: 100%;
+  }
+
+  button.comprar {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  div.seller_info {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  img.profile_icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  label.seller {
+    font-size: 1rem;
+  }
+
+  button.contact {
+    font-size: 1rem;
+    padding: 0.8rem;
   }
 }
