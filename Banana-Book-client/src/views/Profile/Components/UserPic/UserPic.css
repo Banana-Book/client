@@ -1,20 +1,35 @@
 div.user-profile-pic {
-    width: 50%;
-    float: left;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 40%;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-figure.UserProfilePic{
-    width: 40%;
-    height: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15%;
+figure.UserProfilePic {
+  width: 40%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
 }
-img.user-pic{
-    height: 100%;
-    width: 100%;
+
+@media (max-width: 768px) {
+  div.user-profile-pic,
+  figure.UserProfilePic {
+    width: 80%;
+    height: auto;
+    float: none;
+  }
+}
+
+img.user-pic {
+  height: 100%;
+  width: 100%;
+}
+
+img.user-pic {
+  height: 100%;
+  width: 100%;
 }

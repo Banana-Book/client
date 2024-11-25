@@ -1,5 +1,29 @@
 section.profile {
-    background-color: #FFF3C9;
-    height: 92.5vh;
-    width: 100%;
-    }
+  background-color: #fff3c9;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  section.profile {
+    padding: 10px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  section.profile {
+    padding: 5px;
+    gap: 5px;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}

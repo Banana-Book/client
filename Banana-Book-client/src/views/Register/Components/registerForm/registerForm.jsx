@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 import instance from '../../../../api/instance';
 import { useConfigContext } from '../../../../contexts/ConfigContext';
-import { Link } from 'react-router-dom';
+import { validateEmail, validatePassword, validateUsername } from '../../../../utils/validators';
 
 const RegisterForm = () => {
   const [nameField, setName] = useState('');
@@ -16,10 +16,10 @@ const RegisterForm = () => {
   const { startLoading, stopLoading } = useConfigContext();
 
   const errors = {
-    name: !nameField,
-    lastName: !lastNameField,
-    email: !emailField,
-    password: !passwordField,
+    name: !nameField || !validateUsername(nameField),
+    lastName: !lastNameField || !validateUsername(lastNameField),
+    email: !emailField || !validateEmail(emailField),
+    password: !passwordField || !validatePassword(passwordField),
   };
 
   const hasErrors = () => {
@@ -29,12 +29,17 @@ const RegisterForm = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
-    onRegisterUserHandler(nameField, lastNameField, emailField, passwordField);
+    if (hasErrors()) {
+      const errorMessages = [];
+      if (errors.name) errorMessages.push('Nombre no válido');
+      if (errors.lastName) errorMessages.push('Apellido no válido');
+      if (errors.email) errorMessages.push('Correo electrónico no válido');
+      if (errors.password) errorMessages.push('Contraseña no válida');
+      toast.warn(`Datos rellenados incorrectamente: ${errorMessages.join(', ')}`);
+      return;
+    }
 
-    setName('');
-    setLastName('');
-    setEmail('');
-    setPassword('');
+    onRegisterUserHandler(nameField, lastNameField, emailField, passwordField);
     if (hasErrors()) {
       toast.warn('Datos rellenados incorrectamente');
       return;
@@ -49,10 +54,18 @@ const RegisterForm = () => {
   };
 
   const saveUser = async (name, lastName, email, password) => {
-    startLoading();
+    try {
+      startLoading();
 
-    const response = await instance.post('/auth/signup', { name, lastName, email, password });
-    toast.success('Usuario registrado correctamente');
+      const response = await instance.post('/auth/signup', { name, lastName, email, password });
+      console.log(response);
+
+      toast.success('Usuario registrado correctamente');
+    } catch (error) {
+      console.error(error);
+    } finally {
+      stopLoading();
+    }
   };
 
   const onRegisterUserHandler = async (name, lastName, email, password) => {

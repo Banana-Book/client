@@ -1,20 +1,40 @@
-div.profile-pic{
-    width: 35%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    float: left;
-    margin-top: 5%;
+div.profile-pic {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  float: left;
 }
 
 figure.ProfilePic {
-    width: 200px;
-    height: 200px;
-    margin-right: 10%;
+  width: 200px;
+  height: 200px;
 }
 
- img {
+@media (max-width: 768px) {
+  div.profile-pic {
+    width: 50%;
+    margin-top: 10%;
+  }
+
+  figure.ProfilePic {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  div.profile-pic {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+  }
+
+  figure.ProfilePic {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }

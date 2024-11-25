@@ -1,11 +1,16 @@
-.logo-circular{
-    display: flex;
-    justify-content: center;
-
-    margin-top: 7rem;
+.logo-circular {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
 }
 
 .logo-circular > img {
-    width: 340px;
-    height: 329px;
+  max-width: 25rem;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .logo-circular > img {
+    max-width: 10rem;
+  }
 }

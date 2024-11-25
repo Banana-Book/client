@@ -1,29 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Posts from './Posts/Posts';
 import BarraBusqueda from '../../../HomePage/BarraBusqueda/BarraBusqueda';
 import './Feed.css';
+import banana from '../../../../assets/img/banana.png';
+import LoadingScreen from '../../../../Components/Loading/LoadingScreen';
 
 import { toast } from 'react-toastify';
 import instance from '../../../../api/instance';
 import { useQuery } from 'react-query';
 import { useLocation } from 'react-router-dom';
 
-const fetchPosts = async (searchQuery) => {
-  const url = searchQuery ? `/post/search/${encodeURIComponent(searchQuery)}` : '/post/search';
-  const { data } = await instance.get(url);
-  return data;
-};
+export const Feed = ({ filters }) => {
+  const fetchPosts = async (filters, title) => {
+    try {
+      setLoading(true);
+      const { data } = await instance.get('/post', { params: { ...filters, title } });
+      return data;
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
+  };
+  const [loading, setLoading] = useState(false);
 
-export const Feed = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const searchQuery = queryParams.get('search');
-  
-  const { data } = useQuery(['posts', searchQuery], () => fetchPosts(searchQuery), {
+  const title = queryParams.get('search');
+
+  const { data } = useQuery(['posts', filters, title], () => fetchPosts(filters, title), {
     refetchOnWindowFocus: false,
-    onSuccess: () => {
-      toast.success('Posts cargados');
-    },
+    onSuccess: () => {},
     onError: () => {
       toast.error('Error al cargar los posts');
     },
@@ -32,7 +38,15 @@ export const Feed = () => {
   return (
     <main className="feed-wrapper">
       <BarraBusqueda />
-      <Posts posts={data?.posts ?? []} />
+      {!loading && <Posts posts={data?.posts ?? []} />}
+      {loading && (
+        <div className="container">
+          <img className="dot" src={banana} />
+          <img className="dot" src={banana} />
+          <img className="dot" src={banana} />
+          <img className="dot" src={banana} />
+        </div>
+      )}
     </main>
   );
 };

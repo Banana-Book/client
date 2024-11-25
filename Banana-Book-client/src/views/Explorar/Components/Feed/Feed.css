@@ -1,12 +1,42 @@
 section.explorar-page > main.feed-wrapper {
-    grid-area: content;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 32px; 
-    text-align: center;
+  width: 100%;
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 32px;
+  text-align: center;
 }
 
 section.explorar-page > main > div.barra-buscar {
-    margin: 20px;
+  margin: 20px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10rem;
+}
+
+.container .dot {
+  width: 3rem;
+  height: 3rem;
+  animation: loading 1s infinite alternate;
+}
+
+.container .dot:nth-child(1) {
+  animation-delay: -0.25s;
+}
+
+.container .dot:nth-child(2) {
+  animation-delay: -0.5s;
+}
+
+.container .dot:nth-child(3) {
+  animation-delay: -0.75s;
+}
+
+.container .dot:nth-child(4) {
+  animation-delay: -1s;
 }

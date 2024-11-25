@@ -15,6 +15,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import GlobalContainer from './Components/GlobalContainer/GlobalContainer';
 import { setToken } from './api/instance';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import EditPost from './views/EditPost/EditPost';
 
 function App() {
   const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ function App() {
               <Route path="/auth/*" element={<AuthView />} />
               <Route path="/product/:id" element={<Product />} />
               <Route path="/profile" element={<PrivateRoute Component={Profile} />} />
+              <Route path="/profile/editPost/:id" element={<PrivateRoute Component={EditPost} />} />
               <Route path="/newpost" element={<PrivateRoute Component={NewPost} />} />
               <Route path="/explorar" element={<Explorar />} />
               <Route path="*" element={<NotFoundView />} />
